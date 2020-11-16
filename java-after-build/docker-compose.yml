@@ -1,0 +1,11 @@
+version: "3"
+
+services:
+
+  java:
+    image: openjdk:16-jdk-alpine3.12
+    ports:
+      - 8080:80
+    volumes:
+      - ./Main.java:/app/Main.java
+    command: sh -c "cd /app && javac -encoding UTF-8 -nowarn -source 1.8 -target 1.8 -d . Main.java && java com/soulteary/test/Main"

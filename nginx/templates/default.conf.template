@@ -1,0 +1,8 @@
+server {
+    listen       ${NGINX_PORT};
+    server_name  ${NGINX_HOST};
+
+    location / {
+        rewrite .* http://localhost:1024 permanent;
+    }
+}

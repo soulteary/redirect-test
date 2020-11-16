@@ -1,0 +1,1 @@
+redir http://localhost:1024/ permanent

@@ -1,0 +1,23 @@
+version: '3'
+
+services:
+
+  traefik:
+    image: traefik:v2.3.2
+    ports:
+      - 8080:80
+    command: 
+      - "--log.level=ERROR"
+      - "--providers.docker=true"
+      - "--providers.docker.exposedbydefault=true"
+      - "--entrypoints.http.address=:80"
+    labels:
+      - "traefik.http.middlewares.redir.redirectregex.regex=^.*"
+      - "traefik.http.middlewares.redir.redirectregex.replacement=http://localhost:1024"
+      - "traefik.http.routers.redir-test.rule=HostRegexp(`{any:.*}`)"  
+      - "traefik.http.routers.redir-test.entrypoints=http"  
+      - "traefik.http.routers.redir-test.middlewares=redir"
+      - "traefik.http.services.backend.loadbalancer.server.scheme=http"
+      - "traefik.http.services.backend.loadbalancer.server.port=80"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro

@@ -1,0 +1,1 @@
+<?php exit(header('Location: http://localhost:1024', true, 301));?>

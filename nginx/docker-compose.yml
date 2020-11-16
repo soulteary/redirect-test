@@ -1,0 +1,13 @@
+version: "3"
+
+services:
+
+  nginx:
+    image: nginx:1.19.4-alpine
+    volumes:
+       - ./templates:/etc/nginx/templates
+    ports:
+      - 8080:80
+    environment:
+      - NGINX_HOST=localhost
+      - NGINX_PORT=80

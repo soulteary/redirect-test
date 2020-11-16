@@ -1,0 +1,11 @@
+version: "3"
+
+services:
+
+  ruby:
+    image: ruby:3.0.0-preview1-alpine3.12
+    ports:
+      - 8080:80
+    command: ruby /main.rb
+    volumes:
+      - ./main.rb:/main.rb

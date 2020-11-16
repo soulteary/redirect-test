@@ -1,0 +1,11 @@
+version: "3"
+
+services:
+
+  golang:
+    image: golang:1.15.5-alpine3.12
+    ports:
+      - 8080:80
+    command: sh -c "go build /app/main.go && ./main"
+    volumes:
+      - ./main.go:/app/main.go

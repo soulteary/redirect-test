@@ -1,0 +1,11 @@
+version: "3"
+
+services:
+
+  nginx:
+    image: node:15.2.0-alpine3.12
+    volumes:
+       - ./index.js:/app/index.js
+    ports:
+      - 8080:80
+    command: node /app/index.js
